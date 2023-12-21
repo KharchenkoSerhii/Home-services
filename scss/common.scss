@@ -1,0 +1,17 @@
+// Общие блоки заголовки и т.д.
+.block-header {
+
+	// .block-header__title
+	&__title {}
+
+	// .block-header__title--big
+	&__title--big {}
+
+	// .block-header__title--white
+	&__title--white {}
+
+	// .block-header__text
+	&__text {}
+}
+
+.block-header--center {}
