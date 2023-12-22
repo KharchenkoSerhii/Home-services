@@ -1,11 +1,11 @@
 // Обнуление ==============================================================================
-@import 'nullstile.scss';
+@import '_nullstyle.scss';
 // ========================================================================================
 
 
 
 // Общие стили ============================================================================
-@import 'comon.scss';
+
 // ========================================================================================
 
 
@@ -14,10 +14,11 @@
 // Определение функции toRem
 @function toRem($value) {
 	// Базовый размер шрифта (обычно 16px)
-	$baseFontSize: 18px;
+	$baseFontSize: 18;
 	// Вычисление значения в rem
-	@return ($value / $baseFontSize) * 1 rem;
+	@return ($value / $baseFontSize) * 1rem;
 }
+
 // ========================================================================================
 
 
@@ -27,14 +28,16 @@
 //@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 // ========================================================================================
 // Шрифты по умолчанию ====================================================================
-$fontFamily: 'Plus Jakarta Sans',sans-serif;
-$fontSize: toRem(18); //  где (16 px) розмер шрифта по умолчанию с макета
+$fontFamily: 'Plus Jakarta Sans';
+// $fontSize: toRem(18); 
+//  где (16 px) розмер шрифта по умолчанию с макета
 // ========================================================================================
 
 
 
 // Переменные =============================================================================
 $mainColor: #545971; // цвет шрифта по умолчанию
+$darckColor: #171921;
 // ========================================================================================
 
 
@@ -42,8 +45,8 @@ $mainColor: #545971; // цвет шрифта по умолчанию
 // Настройки адаптивной сетки =============================================================
 $minWidth: 320; // Минимальная ширина страницы
 $maxWidth: 1920; // Ширина полотна (макета)
-$maxWidthContainer: toRem(1440px); // Ширина ограничивающего контейнера
-$containerPadding: toRem(30px); // Отступ от контейнера по 15 слева и справа
+$maxWidthContainer: toRem(1440); // Ширина ограничивающего контейнера
+$containerPadding: toRem(30); // Отступ от контейнера по 15 слева и справа
 $containerWidth: $maxWidthContainer + $containerPadding; // Ширина срабатывания первого брекпоинта
 // Брейк-поинты------------------------------------------------------------------------------
 $pc: em($containerWidth);
@@ -55,7 +58,86 @@ $mobileSmall: em(479.98);
 
 
 // Миксины ================================================================================
+// $maxWidth: 1920;
 
+@mixin adaptiv-font($pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$addMobSize: $addSize + $addSize * 0.7;
+
+	@media (max-width: 767px) {
+		font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+	}
+
+	@media (min-width: 767px) {
+		font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+	}
+}
+
+
+// adaptiveValue
+@mixin adaptiveValue($property, $pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$addMobSize: $addSize + $addSize * 0.7;
+
+	@media (max-width: 767px) {
+		#{$property}: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+	}
+	
+	@media (min-width: 767px) {
+		#{$property}: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+	}
+}
+// ========================================================================================
+
+
+
+// ========================================================================================
+// Общие блоки заголовки и т.д. ===========================================================
+.block-header {
+	display: grid;
+	gap: toRem(24);
+
+	// .block-header--center
+	&--center {
+		text-align: center;
+	}
+	// .block-header--inline
+	&--inline {
+		grid-template-columns: minmax(auto, toRem(586)) minmax(auto, toRem(613));
+		justify-content: space-between;
+		align-items: end;
+		gap: toRem(24);
+	}
+	// .block-header__title
+	&__title {
+		color: $darckColor;
+		@include adaptiveValue("font-size", 52, 32);
+		font-weight: 700;
+		line-height: 1.2;
+		// &:not(:last-child) {margin-bottom: toRem(24);}
+	}
+
+	// .block-header__title--big
+	&__title--big {
+			@include adaptiveValue("font-size", 64, 44);
+	}
+
+	// .block-header__title--white
+	&__title--white {
+		color: #fff;
+	}
+
+	// .block-header__text
+	&__text {
+		p{
+			line-height: 1.55;
+		}
+	}
+}
+
+// .block-header--center {}
+// .block-header--inline {}
+// ========================================================================================
 // ========================================================================================
 
 
@@ -63,10 +145,19 @@ $mobileSmall: em(479.98);
 // Общие блоки ============================================================================
 body {
 	font-family: $fontFamily;
-	font-size: $fontSize;
+	@include adaptiveValue("font-size",18 ,16);
 	color: $mainColor;
+	// background-color: rgb(109, 13, 13);
 }
 // ========================================================================================
+
+
+
+
+
+
+
+
 
 
 

@@ -2,7 +2,11 @@
 .block-header {
 
 	// .block-header__title
-	&__title {}
+	&__title {
+		// color: $darckColor;
+		color: $darckColor;
+		font-size: 52px;
+	}
 
 	// .block-header__title--big
 	&__title--big {}

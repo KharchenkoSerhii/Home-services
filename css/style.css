@@ -1,0 +1,139 @@
+@charset "UTF-8";
+/*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 18px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+.block-header {
+  display: grid;
+  gap: 1.3333333333rem;
+}
+.block-header--center {
+  text-align: center;
+}
+.block-header--inline {
+  grid-template-columns: minmax(auto, 32.5555555556rem) minmax(auto, 34.0555555556rem);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  gap: 1.3333333333rem;
+}
+.block-header__title {
+  color: #171921;
+  font-weight: 700;
+  line-height: 1.2;
+}
+@media (max-width: 767px) {
+  .block-header__title {
+    font-size: calc(32px + 34 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 767px) {
+  .block-header__title {
+    font-size: calc(32px + 20 * 100vw / 1920);
+  }
+}
+@media (max-width: 767px) {
+  .block-header__title--big {
+    font-size: calc(44px + 34 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 767px) {
+  .block-header__title--big {
+    font-size: calc(44px + 20 * 100vw / 1920);
+  }
+}
+.block-header__title--white {
+  color: #fff;
+}
+.block-header__text p {
+  line-height: 1.55;
+}
+
+body {
+  font-family: "Plus Jakarta Sans";
+  color: #545971;
+}
+@media (max-width: 767px) {
+  body {
+    font-size: calc(16px + 3.4 * (100vw - 320px) / 1920);
+  }
+}
+@media (min-width: 767px) {
+  body {
+    font-size: calc(16px + 2 * 100vw / 1920);
+  }
+}
