@@ -167,31 +167,45 @@ body {
   z-index: 5;
 }
 .header__schedule {
-  display: none;
+  justify-self: end;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.33;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.625rem;
+}
+.header__schedule::before {
+  content: "";
+  background-color: #FF5E5E;
+  border-radius: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 0.75rem;
+          flex: 0 0 0.75rem;
+}
+@media (max-width: 47.99875rem) {
+  .header__schedule-old {
+    display: none;
+  }
+}
+.header__schedule-new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.875rem 0.9375rem 1.875rem 0.9375rem;
 }
 @media (min-width: 47.99875rem) {
-  .header__schedule {
-    justify-self: end;
-    color: #fff;
-    font-weight: 700;
-    line-height: 1.33;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    gap: 0.625rem;
-  }
-  .header__schedule::before {
-    content: "";
-    background-color: #FF5E5E;
-    border-radius: 50%;
-    width: 0.75rem;
-    height: 0.75rem;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 0.75rem;
-            flex: 0 0 0.75rem;
+  .header__schedule-new {
+    display: none;
   }
 }
 
@@ -224,43 +238,6 @@ body {
     left: 0;
     z-index: 2;
     background-color: #142257;
-  }
-}
-.menu__schedule-import {
-  display: none;
-}
-@media (max-width: 47.99875rem) {
-  .menu__schedule-import {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .menu__schedule-import .header__schedule {
-    padding: 1.875rem 0.9375rem 1.875rem 0.9375rem;
-    justify-self: end;
-    color: #fff;
-    font-weight: 700;
-    line-height: 1.33;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    gap: 0.625rem;
-  }
-  .menu__schedule-import .header__schedule::before {
-    content: "";
-    background-color: #FF5E5E;
-    border-radius: 50%;
-    width: 0.75rem;
-    height: 0.75rem;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 0.75rem;
-            flex: 0 0 0.75rem;
   }
 }
 .menu__list {

@@ -173,30 +173,39 @@ body {
 	// .header__menu
 	&__menu {}
 
-	// .header__schedule
-	&__schedule {
-		display: none;
-			@media (min-width: $mobile) {
-				justify-self: end;
-				color: #fff;
-				font-weight: 700;
-				line-height: 1.33;
-				display: flex;
-				align-items: center;
-				gap: toRem(10);	
-				&::before {
-					content: "";
-					background-color: #FF5E5E;
-					border-radius: 50%;
-					width: toRem(12);
-					height: toRem(12);
-					flex: 0 0 toRem(12);
-				}
-			}
 
+&__schedule {
+	justify-self: end;
+	color: #fff;
+	font-weight: 700;
+	line-height: 1.33;
+	display: flex;
+	align-items: center;
+	gap: toRem(10);	
+	&::before {
+		content: "";
+		background-color: #FF5E5E;
+		border-radius: 50%;
+		width: toRem(12);
+		height: toRem(12);
+		flex: 0 0 toRem(12);
 	}
 }
+@media (max-width: $mobile) {
+	&__schedule-old {
+		display: none;
+	}
+}
+	&__schedule-new {
+		display: flex;
+		justify-content: center;
+		padding: toRem(30) toRem(15) toRem(30) toRem(15);
+	@media (min-width: $mobile) {
+		display: none;
+	}
+	}
 
+}
 .menu {
 	justify-self: center;
 	// .menu__burger
@@ -226,38 +235,6 @@ body {
 			}
 		}
 	}
-
-
-
-	// schedule-import
-	&__schedule-import {
-		display: none;
-		@media (max-width: $mobile) {
-			display: flex;
-			justify-content: center;
-			.header__schedule {
-				padding: toRem(30) toRem(15) toRem(30) toRem(15);
-								justify-self: end;
-									color: #fff;
-									font-weight: 700;
-									line-height: 1.33;
-									display: flex;
-									align-items: center;
-									gap: toRem(10);
-								
-									&::before {
-										content: "";
-										background-color: #FF5E5E;
-										border-radius: 50%;
-										width: toRem(12);
-										height: toRem(12);
-										flex: 0 0 toRem(12);
-									}
-								
-			}
-		}
-	}
-
 
 
 	// .menu__list
