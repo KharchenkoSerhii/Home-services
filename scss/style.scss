@@ -14,7 +14,7 @@
 // Определение функции toRem
 @function toRem($value) {
 	// Базовый размер шрифта (обычно 16px)
-	$baseFontSize: 18;
+	$baseFontSize: 16;
 	// Вычисление значения в rem
 	@return ($value / $baseFontSize) * 1rem;
 }
@@ -38,6 +38,9 @@ $fontFamily: 'Plus Jakarta Sans';
 // Переменные =============================================================================
 $mainColor: #545971; // цвет шрифта по умолчанию
 $darckColor: #171921;
+$bgColor: #142257;
+$bgCollorSemi: #1F3584;
+$bgCollorLite: #15B2F5;
 // ========================================================================================
 
 
@@ -49,31 +52,19 @@ $maxWidthContainer: toRem(1440); // Ширина ограничивающего 
 $containerPadding: toRem(30); // Отступ от контейнера по 15 слева и справа
 $containerWidth: $maxWidthContainer + $containerPadding; // Ширина срабатывания первого брекпоинта
 // Брейк-поинты------------------------------------------------------------------------------
-$pc: em($containerWidth);
-$tablet: em(991.98);
-$mobile: em(767.98);
-$mobileSmall: em(479.98);
+// $pc: em($containerWidth);
+$pc: $containerWidth;
+// $tablet: em(991.98);
+$tablet: toRem(991.98);
+// $mobile: em(767.98);
+$mobile: toRem(767.98);
+// $mobileSmall: em(479.98);
+$mobileSmall: toRem(479.98);
 // ========================================================================================
 
 
 
 // Миксины ================================================================================
-// $maxWidth: 1920;
-
-@mixin adaptiv-font($pcSize, $mobSize) {
-	$addSize: $pcSize - $mobSize;
-	$addMobSize: $addSize + $addSize * 0.7;
-
-	@media (max-width: 767px) {
-		font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
-	}
-
-	@media (min-width: 767px) {
-		font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
-	}
-}
-
-
 // adaptiveValue
 @mixin adaptiveValue($property, $pcSize, $mobSize) {
 	$addSize: $pcSize - $mobSize;
@@ -92,7 +83,7 @@ $mobileSmall: em(479.98);
 
 
 // ========================================================================================
-// Общие блоки заголовки и т.д. ===========================================================
+// Обобщенные блоки заголовки и т.д. ===========================================================
 .block-header {
 	display: grid;
 	gap: toRem(24);
@@ -134,9 +125,6 @@ $mobileSmall: em(479.98);
 		}
 	}
 }
-
-// .block-header--center {}
-// .block-header--inline {}
 // ========================================================================================
 // ========================================================================================
 
@@ -147,17 +135,214 @@ body {
 	font-family: $fontFamily;
 	@include adaptiveValue("font-size",18 ,16);
 	color: $mainColor;
-	// background-color: rgb(109, 13, 13);
+
+}
+[class*=__container] {
+	max-width: calc(toRem(1920) - toRem(320));
+	margin: 0 auto;
+	padding: 0 toRem(15);
 }
 // ========================================================================================
 
 
+// ========================================================================================
+// HEADER==================================================================================
+.header {
+	background-color: $bgColor;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 50;
+	// .header__container
+	&__container {
+		min-height: toRem(80);
+	display: grid;
+	grid-template-columns: toRem(170) 1fr toRem(170);
+	align-items: center;
+	gap: toRem(15);
+	padding-top: toRem(10);
+	padding-bottom: toRem(10);
+	}
+
+	// .header__logo
+	&__logo {
+		position: relative;
+		z-index: 5;
+	}
+
+	// .header__menu
+	&__menu {}
+
+	// .header__schedule
+	&__schedule {
+		display: none;
+			@media (min-width: $mobile) {
+				justify-self: end;
+				color: #fff;
+				font-weight: 700;
+				line-height: 1.33;
+				display: flex;
+				align-items: center;
+				gap: toRem(10);	
+				&::before {
+					content: "";
+					background-color: #FF5E5E;
+					border-radius: 50%;
+					width: toRem(12);
+					height: toRem(12);
+					flex: 0 0 toRem(12);
+				}
+			}
+
+	}
+}
+
+.menu {
+	justify-self: center;
+	// .menu__burger
+	&__burger {}
+
+	// .menu__body
+	&__body {
+		@media (max-width: $mobile) {
+			overflow: auto;
+			display: flex;
+			flex-direction: column;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;	
+			left: 0;
+			background-color: $bgCollorSemi;
+			&::before {
+				content: "";
+				position: fixed;
+				width: 100%;
+				height: toRem(80);
+				top: 0;
+				left: 0;
+				z-index: 2;
+				background-color: $bgColor;
+			}
+		}
+	}
 
 
 
+	// schedule-import
+	&__schedule-import {
+		display: none;
+		@media (max-width: $mobile) {
+			display: flex;
+			justify-content: center;
+			.header__schedule {
+				padding: toRem(30) toRem(15) toRem(30) toRem(15);
+								justify-self: end;
+									color: #fff;
+									font-weight: 700;
+									line-height: 1.33;
+									display: flex;
+									align-items: center;
+									gap: toRem(10);
+								
+									&::before {
+										content: "";
+										background-color: #FF5E5E;
+										border-radius: 50%;
+										width: toRem(12);
+										height: toRem(12);
+										flex: 0 0 toRem(12);
+									}
+								
+			}
+		}
+	}
 
 
 
+	// .menu__list
+	&__list {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		row-gap: toRem(3);
+		@include adaptiveValue("column-gap", 57, 5);
+		@media (max-width: $mobile) {
+			padding: toRem(120) toRem(15) toRem(30) toRem(15);
+			font-size: toRem(28);
+			flex-direction: column;
+			align-items: center;
+			row-gap: toRem(30);
+			flex: 1 1 auto;
+			justify-content: start;
+		}
+	}
+
+	// .menu__item
+	&__item {}
+
+	// .menu__link
+	&__link {
+		color: #fff;
+		font-weight: 700;
+		line-height: 1.33;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.burger-menu {
+	display: none;
+	@media (max-width: $mobile) { 
+		display: block;
+		position: relative;
+		width: toRem(30);
+		height: toRem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: #fff;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - toRem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,&::after {}
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+// HEADER==================================================================================
+// ========================================================================================
 
 
 
