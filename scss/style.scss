@@ -111,6 +111,7 @@ $mobileSmall: toRem(479.98);
 	// .block-header__title--big
 	&__title--big {
 			@include adaptiveValue("font-size", 64, 44);
+			font-weight: 800;
 	}
 
 	// .block-header__title--white
@@ -135,12 +136,16 @@ body {
 	font-family: $fontFamily;
 	@include adaptiveValue("font-size",18 ,16);
 	color: $mainColor;
-
+	// background-color: #15B2F5;
 }
-[class*=__container] {
-	max-width: calc(toRem(1920) - toRem(320));
-	margin: 0 auto;
-	padding: 0 toRem(15);
+.wrapper {
+	// max-width: toRem(1920);
+	// margin: 0 auto;
+}
+[class*=__main-container] {
+	// max-width: calc(toRem(1920) - toRem(320));
+	// margin: 0 auto;
+	// padding: 0 toRem(15);
 }
 // ========================================================================================
 
@@ -154,7 +159,10 @@ body {
 	top: 0;
 	z-index: 50;
 	// .header__container
-	&__container {
+	&__header-container{
+		max-width: calc(toRem(1920) - toRem(320));
+		margin: 0 auto;
+		padding: 0 toRem(15);
 		min-height: toRem(80);
 		display: grid;
 		grid-template-columns: toRem(170) 1fr toRem(170);
@@ -339,4 +347,71 @@ body {
 // ========================================================================================
 
 
+// ========================================================================================
+// MAIN====================================================================================
+.page {}
+// ========================================================================================
+// HERO====================================================================================
+.hero {
+	background-color: $bgCollorLite;
+	width: 100%;
+	&__hero-container {
+		max-width: toRem(1920);
+		padding: toRem(80) toRem(15) toRem(60) toRem(15);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 21.8% 1fr 21.8%;
+
+	}
+
+	// .hero__image
+	&__image {
+		width: 100%;
+
+		& img {
+			border-radius: 24px;
+			overflow: hidden;
+
+			max-width: 100%;
+
+		}
+
+	}
+
+	// .hero__contant
+	&__content {
+		// grid-column: 2;
+		text-align: center;
+	}
+
+	// .hero__block-header
+	&__block-header {}
+}
+
+.block-header {
+
+	// .block-header__title
+	&__title {
+		font-size: 20px;
+	}
+	
+
+	// .block-header__title--white
+	&__title--white {}
+
+	// .block-header__title--big
+	&__title--big {}
+}
+// HERO====================================================================================
+// ========================================================================================
+
+
+
+
+
+
+
+
+// MAIN====================================================================================
+// ========================================================================================
 
