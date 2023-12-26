@@ -156,12 +156,17 @@ body {
 	// .header__container
 	&__container {
 		min-height: toRem(80);
-	display: grid;
-	grid-template-columns: toRem(170) 1fr toRem(170);
-	align-items: center;
-	gap: toRem(15);
-	padding-top: toRem(10);
-	padding-bottom: toRem(10);
+		display: grid;
+		grid-template-columns: toRem(170) 1fr toRem(170);
+		align-items: center;
+		gap: toRem(15);
+		padding-top: toRem(10);
+		padding-bottom: toRem(10);
+		@media (max-width: $mobile) {
+			min-height: toRem(55);
+			grid-template-columns: auto auto;
+			justify-content: space-between;
+		}
 	}
 
 	// .header__logo
@@ -214,6 +219,7 @@ body {
 	// .menu__body
 	&__body {
 		@media (max-width: $mobile) {
+			padding: toRem(100) toRem(15) toRem(30) toRem(15);
 			overflow: auto;
 			display: flex;
 			flex-direction: column;
@@ -221,17 +227,24 @@ body {
 			width: 100%;
 			height: 100%;
 			top: 0;	
-			left: 0;
+			left: 100%;
 			background-color: $bgCollorSemi;
+			transition: all 0.3s ease 0s;
 			&::before {
 				content: "";
 				position: fixed;
 				width: 100%;
-				height: toRem(80);
+				height: toRem(55);
 				top: 0;
-				left: 0;
+				left: 100%;
 				z-index: 2;
 				background-color: $bgColor;
+			}
+			&.menu-open {
+				left: 0;
+				&::before {
+					left: 0;
+				}
 			}
 		}
 	}
@@ -245,10 +258,10 @@ body {
 		row-gap: toRem(3);
 		@include adaptiveValue("column-gap", 57, 5);
 		@media (max-width: $mobile) {
-			padding: toRem(120) toRem(15) toRem(30) toRem(15);
+			// padding: toRem(120) toRem(15) toRem(30) toRem(15);
 			font-size: toRem(28);
 			flex-direction: column;
-			align-items: center;
+			align-items:center;
 			row-gap: toRem(30);
 			flex: 1 1 auto;
 			justify-content: start;
@@ -302,15 +315,19 @@ body {
 		span {
 			top: calc(50% - toRem(1));
 		}
-		.menu-open & {
+		&.menu-open {
 			span {
-				width: 0;
+				transform: scale(0);
 			}
-			&::before,&::after {}
+
+			&::before,
+			&::after {}
+
 			&::before {
 				top: calc(50% - toRem(1));
 				transform: rotate(-45deg);
 			}
+
 			&::after {
 				bottom: calc(50% - toRem(1));
 				transform: rotate(45deg);
