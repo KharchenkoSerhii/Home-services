@@ -39,8 +39,9 @@ $fontFamily: 'Plus Jakarta Sans';
 $mainColor: #545971; // цвет шрифта по умолчанию
 $darckColor: #171921;
 $bgColor: #142257;
-$bgCollorSemi: #1F3584;
-$bgCollorLite: #15B2F5;
+$greyColor: #9EA3B5;
+$bgColorSemi: #1F3584;
+$bgColorLite: #15B2F5;
 // ========================================================================================
 
 
@@ -65,19 +66,27 @@ $mobileSmall: toRem(479.98);
 
 
 // Миксины ================================================================================
-// adaptiveValue
+// adaptiveValue = ($property-css стиль, $pcSize-максимальный параметр, $mobSize-минимальный параметр)
+
+
 @mixin adaptiveValue($property, $pcSize, $mobSize) {
 	$addSize: $pcSize - $mobSize;
 	$addMobSize: $addSize + $addSize * 0.7;
 
-	@media (max-width: 767px) {
-		#{$property}: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
-	}
-	
-	@media (min-width: 767px) {
-		#{$property}: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
-	}
+@media (min-width: toRem(1920)) {
+	#{$property}: #{$pcSize + px};
 }
+@media (max-width: toRem(1920)) {
+	@media (max-width: 767px) {
+			#{$property}: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+		}
+	
+		@media (min-width: 767px) {
+			#{$property}: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+		}
+}
+}
+
 // ========================================================================================
 
 
@@ -102,7 +111,7 @@ $mobileSmall: toRem(479.98);
 	// .block-header__title
 	&__title {
 		color: $darckColor;
-		@include adaptiveValue("font-size", 52, 32);
+		// @include adaptiveValue("font-size", 52, 24);
 		font-weight: 700;
 		line-height: 1.2;
 		// &:not(:last-child) {margin-bottom: toRem(24);}
@@ -110,10 +119,10 @@ $mobileSmall: toRem(479.98);
 
 	// .block-header__title--big
 	&__title--big {
-			@include adaptiveValue("font-size", 64, 44);
+			@include adaptiveValue("font-size", 64, 32);
 			font-weight: 800;
 	}
-
+	
 	// .block-header__title--white
 	&__title--white {
 		color: #fff;
@@ -126,6 +135,8 @@ $mobileSmall: toRem(479.98);
 		}
 	}
 }
+
+
 // ========================================================================================
 // ========================================================================================
 
@@ -236,7 +247,7 @@ body {
 			height: 100%;
 			top: 0;	
 			left: 100%;
-			background-color: $bgCollorSemi;
+			background-color: $bgColorSemi;
 			transition: all 0.3s ease 0s;
 			&::before {
 				content: "";
@@ -350,51 +361,180 @@ body {
 // ========================================================================================
 // MAIN====================================================================================
 .page {}
+
 // ========================================================================================
 // HERO====================================================================================
+
+// Класс ibg--------------------------------------------------------
+// .ibg {
+// 	background-position: center;
+// 	background-size: cover;
+// 	background-repeat: no-repeat;
+// 	position: relative;
+
+// 	img {
+// 		display: none;
+// 	}
+// }
+// Класс ibg--------------------------------------------------------
+
+
 .hero {
-	background-color: $bgCollorLite;
+	background-color: $bgColor;
 	width: 100%;
+			
+	// .hero__hero-container
 	&__hero-container {
 		max-width: toRem(1920);
-		padding: toRem(80) toRem(15) toRem(60) toRem(15);
+		padding: toRem(80) toRem(15) toRem(10) toRem(15);
 		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 21.8% 1fr 21.8%;
+		display: flex;
+		justify-content: space-between;
 
+		@media (max-width: toRem(767.98)) {
+			padding: toRem(50) toRem(15) toRem(10) toRem(15);
+		}	
 	}
 
+// -------------------------------------------------------------
 	// .hero__image
 	&__image {
-		width: 100%;
-
-		& img {
+		// width: 21.8%;
+		width: 21.8%;
+		// flex: 1 1 21.8;
+		// width: 100%;
+		// height: auto;
+		// display: block;
+		// @include adaptiveValue("width", 412, 300);
+		// aspect-ratio: 1 / 2;
+		position: relative;
+		// background: url("../img/hero/hero-left.jpg")left no-repeat;
+		& img{
 			border-radius: 24px;
 			overflow: hidden;
-
 			max-width: 100%;
-
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
 		}
+				// .hero__image_left // тень на картикку
+				&_left {
+					&:after {
+						content: "";
+						position: absolute;
+						width: 100%;
+						min-height: 100%;
+						top: 0;
+						right: 0px;
+						background: url("../img/hero/Shadow-left.svg")0 0/cover no-repeat;
+					}
+				}
+		
+				// .hero__image_right // тень на картикку
+				&_right {
+					&:after {
+						content: "";
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						left: 0;
+						background: url("../img/hero/Shadow-right.svg") no-repeat;
+						background-size: cover;
+					}
+				}
+				@media (max-width: toRem(991.98)) {
+					display: none;
+				}
+	}
+// -------------------------------------------------------------
 
+
+
+	
+	// .hero__body
+	&__body {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		// row-gap: toRem(50);
+		@include adaptiveValue("padding-top", 160, 24);
+		@include adaptiveValue("padding-left", 40, 10);
+		@include adaptiveValue("padding-right", 40, 10);
 	}
 
-	// .hero__contant
+	// .hero__content
 	&__content {
-		// grid-column: 2;
-		text-align: center;
+		// max-width: toRem(680);
+		@include adaptiveValue("padding-bottom", 150, 50);
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	// .hero__items
+	&__items {
+		&:not(:last-child) {
+			// margin-bottom: toRem(24);
+			@include adaptiveValue("margin-bottom", 24, 14);
+		}
 	}
 
 	// .hero__block-header
-	&__block-header {}
+	&__block-header {
+		max-width: toRem(670);
+		&:not(:last-child) {
+			margin-bottom: toRem(24);
+		}
+	}
+
+	// .hero__done
+	&__done {}
+
+	// .hero__button
+	&__button {}
+
+	// .hero__advantages
+	&__advantages {}
+}
+
+.items-hero {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	column-gap: toRem(52);
+	// .items-hero__item
+	&__item {
+		font-size: toRem(20);
+		font-weight: 700;
+		line-height: 1.4;
+		color: $greyColor;
+		position: relative;
+		&:not(:last-child) {
+			&::after {
+				content: "";
+				position: absolute;
+				top: calc(50% - toRem(2));
+				right: toRem(-28.5);
+				width: toRem(5);
+				height: toRem(5);
+				border-radius: 50%;
+				background-color: #9EA3B5;
+			}
+		}
+	}
 }
 
 .block-header {
 
 	// .block-header__title
-	&__title {
-		font-size: 20px;
-	}
-	
+	&__title {}
 
 	// .block-header__title--white
 	&__title--white {}
@@ -402,13 +542,176 @@ body {
 	// .block-header__title--big
 	&__title--big {}
 }
+
+.block-header--center {}
+
+.done {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: toRem(40);
+	row-gap: toRem(3);
+	margin-bottom: toRem(48);
+	// .done__item
+	&__item {
+		font-size: 20px;
+		line-height: 1.5;
+		color: $bgColorLite;
+		background: url("../img/icons/ok-check.svg") left toRem(4) no-repeat;
+		padding-left: toRem(32);
+	}
+}
+.button {
+	padding: toRem(7);
+	border-radius: toRem(60);
+	font-size: toRem(24);
+	font-weight: 700;
+	line-height: 1.33;
+	transition: all 0.3s ease 0s;
+	&:hover {
+
+	}
+}
+.button--call {
+	background-color: $bgColorLite;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	border: toRem(1) solid $bgColorLite;
+	// @include adaptiveValue("margin-bottom", 150, 50);
+	// margin-bottom: toRem(150);
+	&:hover {
+		box-sizing: border-box;
+		background-color: $bgColorSemi;
+	}
+	span:nth-child(1) {
+		padding: toRem(8) toRem(16);
+	}
+	span:last-child {
+		background: url("../img/icons/Icon-phone.svg") left no-repeat;
+		background-color: #fff;
+		width: toRem(48);
+		height: toRem(48);
+		border-radius: 50%;		
+	}
+}
+
+.advantages-hero {
+	padding-bottom: toRem(30);
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	@include adaptiveValue("column-gap", 60, 50);
+	row-gap: toRem(40);
+	position: relative;
+	
+	@media (max-width: toRem(1920)) {
+		grid-template-columns: repeat(2, auto);
+		justify-content: center;
+	}
+
+	@media (max-width: toRem(767.98)) {
+		&::after {
+			content: "";
+			position: absolute;
+			background: url("../img/hero/advantages-hero-decore/decore.svg") no-repeat;
+			width: toRem(280);
+			height: toRem(220);
+			bottom: 50%;
+			left: 50%;
+			transform: translate(-50%, 43%);
+		}
+	}
+	
+	&__item {
+		// flex: 1 1 25%;
+		display: flex;
+		align-items: center;
+		column-gap: toRem(16);
+		row-gap: toRem(8);
+		position: relative;
+		@media (min-width: toRem(1920)) {
+			&:not(:last-child) {
+				&::after {
+					content: "";
+					position: absolute;
+					@include adaptiveValue("right", -30, -20);
+					height: 100%;
+					// right: 0;
+					top: 0;
+					width: toRem(1);
+					background: linear-gradient(0deg, rgba(79, 102, 183, 0) 0%, rgba(79, 102, 183, 1) 50%, rgba(79, 102, 183, 0) 100%);
+				}
+			}
+		}
+		@media (max-width: toRem(991.98)) {
+			flex-direction: column;	
+		}
+		@media (max-width: toRem(767.98)) {
+			max-width: 120px;
+		}
+	}
+
+	// .advantages-hero__icon
+	&__icon {
+		border-radius: 50%;
+		min-width: toRem(48);
+		min-height: toRem(48);
+		background-color: $bgColorSemi;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		img {
+			max-width: 100%;
+		}
+	}
+
+	// .advantages-hero__text
+	&__text {
+	font-weight: 600;
+	line-height: 1.33;
+	color: #fff;
+	text-align: center;
+	}
+}
+
+
+.decore-hero {
+background-color: #fff;
+
+	// .decore-hero__main
+	&__main {
+			max-width: toRem(1920);
+				margin: 0 auto;
+				@include adaptiveValue("height", 45, 30);
+				background-color: $bgColor;
+				position: relative	
+	}
+
+	// .decore-hero__left
+	&__left {
+		@include adaptiveValue("height", 45, 30);
+		position: absolute;
+		background: url("../img/hero/decore/Decoration-l.svg") no-repeat;
+		background-size: cover;
+		width: 480px;
+		bottom: 0;
+		@include adaptiveValue("left", 0, -400);
+	}
+
+	// .decore-hero__right
+	&__right {
+		@include adaptiveValue("height", 45, 30);
+		position: absolute;
+		background: url("../img/hero/decore/Decoration-r.svg") no-repeat;
+		background-size: cover;
+		@include adaptiveValue("width", 480, 64);
+		bottom: 0;
+		right: 0;		
+	}
+}
+
 // HERO====================================================================================
 // ========================================================================================
-
-
-
-
-
 
 
 
