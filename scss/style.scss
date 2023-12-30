@@ -96,6 +96,7 @@ $mobileSmall: toRem(479.98);
 .block-header {
 	display: grid;
 	gap: toRem(24);
+	@include adaptiveValue("margin-bottom", 56, 16);
 
 	// .block-header--center
 	&--center {
@@ -111,7 +112,7 @@ $mobileSmall: toRem(479.98);
 	// .block-header__title
 	&__title {
 		color: $darckColor;
-		// @include adaptiveValue("font-size", 52, 24);
+		@include adaptiveValue("font-size", 52, 24);
 		font-weight: 700;
 		line-height: 1.2;
 		// &:not(:last-child) {margin-bottom: toRem(24);}
@@ -153,10 +154,12 @@ body {
 	// max-width: toRem(1920);
 	// margin: 0 auto;
 }
-[class*=__main-container] {
-	// max-width: calc(toRem(1920) - toRem(320));
-	// margin: 0 auto;
-	// padding: 0 toRem(15);
+[class*=__container] {
+	// max-width: calc(toRem(1920) - toRem(480) + toRem(30));
+	max-width: toRem(1470);
+	margin: 0 auto;
+	padding: 0 toRem(15);
+	// border: 1px solid black;
 }
 // ========================================================================================
 
@@ -385,6 +388,7 @@ body {
 			
 	// .hero__hero-container
 	&__hero-container {
+		// border: 1px solid #fff;
 		max-width: toRem(1920);
 		padding: toRem(80) toRem(15) toRem(10) toRem(15);
 		margin: 0 auto;
@@ -603,13 +607,13 @@ body {
 	@include adaptiveValue("column-gap", 60, 50);
 	row-gap: toRem(40);
 	position: relative;
-	
+
 	@media (max-width: toRem(1920)) {
 		grid-template-columns: repeat(2, auto);
 		justify-content: center;
 	}
 
-	@media (max-width: toRem(767.98)) {
+	@media (max-width: toRem(991.98)) {
 		&::after {
 			content: "";
 			position: absolute;
@@ -671,6 +675,10 @@ body {
 	line-height: 1.33;
 	color: #fff;
 	text-align: center;
+	@media (min-width: toRem(1920)) {
+		flex: 1 1 auto;
+		text-align: start;
+	}
 	}
 }
 
@@ -712,6 +720,239 @@ background-color: #fff;
 
 // HERO====================================================================================
 // ========================================================================================
+// ========================================================================================
+// SERVICES================================================================================
+.services {
+		@include adaptiveValue("padding-top", 120, 46);
+		@include adaptiveValue("padding-bottom", 64, 30);
+	// .services__container
+	&__container {}
+
+	// .services__cover
+	&__cover {
+		display: flex;
+		justify-content: space-between;
+		gap: toRem(20);
+		@media (max-width: $tablet) {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+	}
+
+	// .services__body
+	&__body {
+		@include adaptiveValue("padding-top", 100, 10);
+		// flex: 1 1 50%;
+		max-width: toRem(580);
+		@media (max-width: $tablet) {
+			max-width: 100%;
+			// flex-direction: column;
+			// align-items: center;
+			// justify-content: center;
+			// text-align: center;
+		}
+	}
+
+	// .services__block-header
+	&__block-header {
+		
+	}
+
+	// .services__items
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: toRem(32);
+		@include adaptiveValue("margin-bottom", 56, 24);
+		@media (max-width: $mobileSmall) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	// .services__item
+	&__item {
+		@include adaptiveValue("font-size", 20, 18);
+		font-style: normal;
+		font-weight: 700;
+		line-height: 1.4;
+		color: $bgColorSemi;
+		background: url("../img/services/services-check.svg") 0 toRem(7) no-repeat;
+		padding-left: toRem(28);
+	}
+
+	// .services__info
+	&__info {
+		max-width: toRem(460);
+		padding: toRem(12) toRem(32);
+		background-color: $bgColorLite;
+		@include adaptiveValue("border-radius", 24, 12);
+		@include adaptiveValue("font-size", 20, 17);
+		line-height: 1.4;
+		color: #fff;
+		@media (max-width: $tablet) {
+			max-width: 100%;
+		}
+		a {
+			white-space: nowrap;
+			font-weight: 600;
+			color: #fff;
+			text-decoration-line: underline;
+		}
+
+	}
+
+	//.services__image
+	&__image {}	
+}
+.services__image-up {
+	display: none;
+	@media (max-width: toRem(991.98)) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		& img {
+			max-width: 100%;
+		}
+	}
+}
+.services__image-doun {
+	display: none;	
+	@media (min-width: toRem(991.98)) {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		width: 100%;
+		& img {
+			max-width: 100%;
+		}
+	}
+}
+
+
+
+
+.block-header {
+	
+	// .block-header__title
+	&__title {}
+
+	// .block-header__text
+	&__text {
+		p {
+			color: $mainColor;
+			line-height: 1.55;
+			
+		}
+	}
+}
+// SERVICES================================================================================
+// ========================================================================================
+
+// ========================================================================================
+// OUR_SERVICE=============================================================================
+.our-service {
+
+	// .our-service__container
+	&__container {}
+		@include adaptiveValue("padding-top", 120, 30);
+		@include adaptiveValue("padding-bottom", 120, 30);
+
+	// .our-service__block-header
+	&__block-header {
+		max-width: toRem(560);
+		margin-left: auto;
+		margin-right: auto;
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 60, 30);
+		}
+	}
+
+	// .our-service__items
+	&__items {
+		display: grid;
+		// grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(auto-fit, minmax(toRem(290), 1fr));
+		// @include adaptiveValue("row-gap", 0, 30);
+	}
+
+	// .our-service__item
+	&__item {
+		
+	}
+}
+
+.block-header--center {}
+
+.item-our-service {
+	border-radius: toRem(24);
+	// border: 1px solid #000;
+	@include adaptiveValue("padding", 32, 16);
+	// @include adaptiveValue("padding", 32, 0);
+	// .item-our-service__icon
+	@media (max-width: $mobileSmall) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+	&__icon {
+		background-color: $bgColor;
+		width: toRem(64);
+		height: toRem(64);
+		border-radius: toRem(20);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: toRem(16);
+	}
+
+	// .item-our-service__title
+	&__title {
+		margin-bottom: toRem(12);
+		font-size: toRem(24);
+		font-weight: 700;
+		line-height: 1.33;
+		color: $darckColor;
+	}
+
+	// .item-our-service__text
+	&__text {
+		line-height: 1.55;
+	}
+
+	// .item-our-service__button
+	&__button {}
+}
+
+.item-our-service--blue {
+	background-color: $bgColorLite;
+	text-align: center;
+	color: #fff;
+	&__title {
+		color: #fff;
+	}
+	&__text {
+		margin-bottom: toRem(30);
+	}
+}
+
+.button--white {
+	background-color: #fff;
+	display: block;
+	width: 100%;
+	padding: toRem(16) 0;
+	font-size: toRem(24);
+	font-weight: 700;
+	line-height: 1.33;
+	color: $bgColorLite;
+}
+
+// OUR_SERVICE=============================================================================
+// ========================================================================================
+
 
 
 
