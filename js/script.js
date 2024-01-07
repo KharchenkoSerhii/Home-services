@@ -1,5 +1,5 @@
 'use ctrict';
-
+// ==================================================================
 // функция ibg=======================================================
 function ibg() {
 
@@ -14,23 +14,41 @@ function ibg() {
 
 ibg();
 // функция ibg=======================================================
+// ==================================================================
 
+
+
+
+// ==================================================================
+// burger============================================================
 let burger = document.querySelector(".burger-menu");
 let menuBody = document.querySelector(".menu__body");
 burger.addEventListener('click', function (event){
 	burger.classList.toggle("menu-open");
 	menuBody.classList.toggle("menu-open");
 });
+// burger============================================================
+// ==================================================================
 
 
 
 
+// ==================================================================
+// anchors===========================================================
+const anchors = document.querySelectorAll('a[href*="#"]');
 
-
-
-
-
-
+for (let anchor of anchors) {
+	anchor.addEventListener("click", function (event) {
+		event.preventDefault();
+		const blockID = anchor.getAttribute('href');
+		document.querySelector('' + blockID).scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	});
+}
+// anchors===========================================================
+// ==================================================================
 
 
 

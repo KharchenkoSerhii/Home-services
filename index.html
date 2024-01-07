@@ -18,10 +18,10 @@
 					<div class="menu__burger burger-menu"><span></span></div>
 					<nav class="menu__body">
 						<ul class="menu__list">
-							<li class="menu__item"><a href="#" class="menu__link">About Us</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Services</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Our Blog</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Contact </a></li>
+							<li class="menu__item"><a href="#about" data-goto=".about" class="menu__link">About Us</a></li>
+							<li class="menu__item"><a href="#services" data-goto=".services" class="menu__link">Services</a></li>
+							<li class="menu__item"><a href="#blog" data-goto=".blog" class="menu__link">Our Blog</a></li>
+							<li class="menu__item"><a href="#contacts" data-goto=".contacts" class="menu__link">Contact </a></li>
 						</ul>
 						<div class="header__schedule header__schedule-new">24 Hour Services</div>
 					</nav>
@@ -32,10 +32,12 @@
 <!-- ===================================================================================== -->
 
 
+
+
 <!-- ====================================MAIN============================================= -->
 		<main class="page">
 
-			<section class="hero">
+			<section class="hero" id="about">
 				<div class="hero__hero-container">
 					
 				<div class="hero__image hero__image_left">
@@ -119,7 +121,7 @@
 
 			</section>
 
-			<section class="services">
+			<section class="services" id="services">
 				<div class="services__container">
 
 					<div class="services__cover">
@@ -277,17 +279,145 @@
 			</section>
 
 			<section class="guarantee">
-				<div class="guarantee__container">
-					<div class="guarantee__block-header block-header block-header--inline">
-						<h2 class="block-header__title block-header__title--white">
-							Fast, Friendly, and Satisfaction Guarantee
-						</h2>
-						<div class="block-header__text">
-							<p>
-								No matter how big or small your work is, whether it's for the interior or exterior of your home, we are ready to serve and help you solve your home problems.
-							</p>
+				<div class="guarantee__guarantee-container">
+					<div class="guarantee__container">
+
+						<div class="guarantee__block-header block-header block-header--inline">
+							<h2 class="block-header__title block-header__title--white">
+								Fast, Friendly, and Satisfaction Guarantee
+							</h2>
+							<div class="block-header__text">
+								<p>
+									No matter how big or small your work is, whether it's for the interior or exterior of your home, we are ready to serve and help you solve your home problems.
+								</p>
+							</div>
 						</div>
-					</div> 
+						
+						<div class="guarantee__items">
+
+							<div class="guarantee__item item-guarantee">
+								<div class="item-guarantee__icon">
+									<img src="img/guarantee/icon/guarantee01.svg" alt="">
+								</div>
+								<div class="item-guarantee__body">
+									<h4 class="item-guarantee__title">Satisfaction Guarantee</h4>
+									<div class="item-guarantee__text">							
+										<p>
+											you don't need to worry about scams or our performance results. our company has been verified and strives for optimal results
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="guarantee__item item-guarantee">
+								<div class="item-guarantee__icon">
+									<img src="img/guarantee/icon/guarantee02.svg" alt="">
+								</div>
+								<div class="item-guarantee__body">
+									<h4 class="item-guarantee__title">Free Quotes</h4>
+									<div class="item-guarantee__text">
+										<p>
+											Get personalized cost estimates without any obligation. Experience transparency and peace of mind as you explore our service.
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="guarantee__item item-guarantee">
+								<div class="item-guarantee__icon">
+									<img src="img/guarantee/icon/guarantee03.svg" alt="">
+								</div>
+								<div class="item-guarantee__body">
+									<h4 class="item-guarantee__title">Local Professionals</h4>
+									<div class="item-guarantee__text">							
+										<p>
+											Our services cover the Nationwide, US area, including urban, suburban, and rural locations for both long and short term maintenance
+										</p>
+									</div>
+								</div>
+							</div>
+							
+							<div class="guarantee__item item-guarantee">
+								<div class="item-guarantee__icon">
+									<img src="img/guarantee/icon/guarantee04.svg" alt="">
+								</div>
+								<div class="item-guarantee__body">
+									<h4 class="item-guarantee__title">Fast 24-Hour Service</h4>
+									<div class="item-guarantee__text">							
+										<p>
+											need fast handling for repairs to drains, leaks or something else? Our experts are available anytime to help you solve the problem
+										</p>
+									</div>
+								</div>
+							</div>
+							
+							<div class="guarantee__item item-guarantee">
+								<div class="item-guarantee__icon">
+									<img src="img/guarantee/icon/guarantee05.svg" alt="">
+								</div>
+								<div class="item-guarantee__body">
+									<h4 class="item-guarantee__title">Flexible Appointments</h4>
+									<div class="item-guarantee__text">								
+										<p>
+											We offer convenient appointment times that can accommodate your busy schedule, day or night, 7 days a week.
+										</p>
+									</div>
+								</div>
+							</div>
+							
+							<div class="guarantee__item item-guarantee">
+								<div class="item-guarantee__icon">
+									<img src="img/guarantee/icon/guarantee06.svg" alt="">
+								</div>
+								<div class="item-guarantee__body">
+									<h4 class="item-guarantee__title">100% Commitment-Free</h4>
+									<div class="item-guarantee__text">
+										<p>
+											You are free to ask us about the problems you are facing. We offer a no-commitment approach to put your mind at ease
+										</p>
+									</div>
+								</div>
+							</div>										
+
+						</div>
+
+					</div>
+				</div>
+
+			</section>
+
+			<section class="how">
+				<div class="how__container">
+					<div class="how__image">
+						<img src="img/how/Image.jpg" alt="image">
+					</div>
+					<div class="how__content">
+						<div class="how__block-header block-header">
+							<h2 class="block-header__title">
+								How HomePro works?
+							</h2>
+						</div>
+						<ol class="how__list list-how">
+							<li class="list-how__item">
+								<div class="list-how__title">Call us anytime 24/7</div>
+								<div class="list-how__text">
+									You can contact us directly, we will quickly put you in touch with our home care professionals who are ready anytime
+								</div>
+							</li>
+							<li class="list-how__item">
+								<div class="list-how__title">Schedule Service</div>
+								<div class="list-how__text">
+									After connecting your call, our home care experts will answer your questions and provide flexible appointment times
+								</div>
+							</li>
+							<li class="list-how__item">
+								<div class="list-how__title">Your request is complated</div>
+								<div class="list-how__text">
+									Once your technician arrives, he will diagnose the problem and provide an estimate. If you decide to continue, the technician will get to work
+								</div>
+							</li>
+						</ol>
+					</div>
 				</div>
 			</section>
 

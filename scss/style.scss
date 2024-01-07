@@ -92,11 +92,44 @@ $mobileSmall: toRem(479.98);
 
 
 // ========================================================================================
-// Обобщенные блоки заголовки и т.д. ===========================================================
+// Обобщенные блоки заголовки и т.д. ======================================================
+
+// Класс ibg--------------------------------------------------------
+// .ibg {
+// 	background-position: center;
+// 	background-size: cover;
+// 	background-repeat: no-repeat;
+// 	position: relative;
+
+// 	img {
+// 		display: none;
+// 	}
+// }
+// Класс ibg--------------------------------------------------------
+
+// Счетчик для списка-----------------------------------------------
+%listCounter {
+	list-style-type: none;
+	counter-reset: item;
+	li {
+		position: relative;
+		&:before {
+			counter-increment: item;
+			content: counter(item) ".";
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+// вызов в классе  ---  @extend %listCounter;
+// Счетчик для списка-----------------------------------------------
+
+
 .block-header {
 	display: grid;
 	gap: toRem(24);
-	@include adaptiveValue("margin-bottom", 56, 16);
+	// @include adaptiveValue("margin-bottom", 56, 16);
 
 	// .block-header--center
 	&--center {
@@ -108,6 +141,10 @@ $mobileSmall: toRem(479.98);
 		justify-content: space-between;
 		align-items: end;
 		gap: toRem(24);
+				@media (max-width: $tablet) {
+					display: block;
+					text-align: center;
+				}
 	}
 	// .block-header__title
 	&__title {
@@ -115,7 +152,9 @@ $mobileSmall: toRem(479.98);
 		@include adaptiveValue("font-size", 52, 24);
 		font-weight: 700;
 		line-height: 1.2;
-		// &:not(:last-child) {margin-bottom: toRem(24);}
+		@media (max-width: $tablet) {
+			&:not(:last-child) {margin-bottom: toRem(24);}
+		}
 	}
 
 	// .block-header__title--big
@@ -361,26 +400,18 @@ body {
 // ========================================================================================
 
 
+
+
+
+
+
 // ========================================================================================
 // MAIN====================================================================================
 .page {}
 
+
 // ========================================================================================
 // HERO====================================================================================
-
-// Класс ibg--------------------------------------------------------
-// .ibg {
-// 	background-position: center;
-// 	background-size: cover;
-// 	background-repeat: no-repeat;
-// 	position: relative;
-
-// 	img {
-// 		display: none;
-// 	}
-// }
-// Класс ibg--------------------------------------------------------
-
 
 .hero {
 	background-color: $bgColor;
@@ -720,6 +751,9 @@ background-color: #fff;
 
 // HERO====================================================================================
 // ========================================================================================
+
+
+
 // ========================================================================================
 // SERVICES================================================================================
 .services {
@@ -757,7 +791,7 @@ background-color: #fff;
 
 	// .services__block-header
 	&__block-header {
-		
+		@include adaptiveValue("margin-bottom", 56, 16);
 	}
 
 	// .services__items
@@ -831,9 +865,6 @@ background-color: #fff;
 	}
 }
 
-
-
-
 .block-header {
 	
 	// .block-header__title
@@ -850,6 +881,8 @@ background-color: #fff;
 }
 // SERVICES================================================================================
 // ========================================================================================
+
+
 
 // ========================================================================================
 // OUR_SERVICE=============================================================================
@@ -952,6 +985,263 @@ background-color: #fff;
 
 // OUR_SERVICE=============================================================================
 // ========================================================================================
+
+
+
+// ========================================================================================
+// GUARANTEE===============================================================================
+
+.guarantee {
+	// @include adaptiveValue("padding-left", 60, 15);
+	// @include adaptiveValue("padding-right", 60, 15);
+
+	// .guarantee__guarantee-container
+	&__guarantee-container {
+		max-width: toRem(1920);
+		margin: toRem(20) auto;
+		border-radius: toRem(24);
+		@include adaptiveValue("padding-top", 60, 32);
+		@include adaptiveValue("padding-bottom", 60, 32);
+		@include adaptiveValue("padding-left", 100, 0);
+		@include adaptiveValue("padding-right", 100, 0);
+		background-color: $bgColor;
+		position: relative;
+		// @media (min-width: $tablet){
+		// 	padding-right: 0;
+		// 	padding-right: 0;
+		// }
+		position: relative;
+		&::before, &::after {
+			content: "";
+			position: absolute;
+			width: toRem(45);
+			height: 100%;
+			top: 50%;
+			transform: translate(0, -50%);
+		}
+		&::before {
+			background: url("../img/guarantee/decoration/decoration_l.svg") center no-repeat;
+			left: 0;
+			@media (max-width: $tablet) {
+				display: none;
+			}
+		}
+		&::after  {
+			background: url("../img/guarantee/decoration/decoration_r.svg") center no-repeat;
+			right: 0;
+			@media (max-width: $tablet) {
+			display: none;
+			}
+		}
+	}
+	// .guarantee__container
+	&__container {
+		// padding: toRem(60) toRem(26);                                       
+		padding: 0 toRem(32);
+	}
+
+	// .guarantee__block-header
+	&__block-header {
+		position: relative;
+		@include adaptiveValue("padding-bottom", 120, 60);
+		@media (max-width: $tablet) {
+			// flex-direction: column;
+			// grid-template-columns: repeat(1fr);
+		}
+		@media (max-width: $mobile) {
+			// flex-direction: column;
+		}
+		
+		&::after {
+			content: "";
+			position: absolute;
+			@include adaptiveValue("bottom", 60, 30);
+			left: 0;
+			width: 100%;
+			height: toRem(1);
+			// background: rgb(78, 101, 182);
+			background: linear-gradient(90deg, rgba(78, 101, 182, 0) 0%, rgba(78, 101, 182, 1) 50%, rgba(78, 101, 182, 0) 100%);
+		}
+	}
+
+	// .guarantee__items
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		@include adaptiveValue("column-gap", 60, 20);
+		@include adaptiveValue("row-gap", 60, 50);
+		@media (max-width: $tablet) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	// .guarantee__item
+	&__item {}
+}
+
+.block-header {
+
+	// .block-header__title
+	&__title {}
+
+	// .block-header__title--white
+	&__title--white {}
+
+	// .block-header__text
+	&__text {
+		& p {
+			color: $greyColor;
+		}
+	}
+}
+
+.item-guarantee {
+	max-width: toRem(630);
+	display: flex;
+	column-gap: toRem(32);
+	row-gap: toRem(12);
+	@media (max-width: $tablet) {
+		margin: 0 auto;
+	}
+	@media (max-width: $mobile) {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	// .item-guarantee__icon
+	&__icon {}
+
+	// .item-guarantee__body
+	&__body {
+		@media (max-width: $mobile) {
+			text-align: center;
+		}
+
+
+	}
+
+	// .item-guarantee__title
+	&__title {
+		@include adaptiveValue("font-size", 24, 18);
+			font-weight: 700;
+			line-height: 1.33;
+			color: #fff;
+		 	padding-bottom: toRem(12);
+	}
+
+	// .item-guarantee__text
+	&__text {
+		& p {
+			color: $greyColor;
+		}
+	}
+}
+// GUARANTEE===============================================================================
+// ========================================================================================
+
+
+
+// ========================================================================================
+// HOW=====================================================================================
+.how {
+	@include adaptiveValue("padding-top", 156, 32);
+	@include adaptiveValue("padding-bottom", 156, 32);
+
+	// .how__container
+	&__container {
+		border: 1px solid #FF5E5E;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		@media (max-width: $tablet) {
+			grid-template-columns: auto;
+			gap: toRem(30);
+		}
+	}
+
+	// .how__image
+	&__image {
+		// transform: translate(-11%, 0);
+		img {
+			transform: translate(-11%, 0);
+			max-width: 100%;
+			@media (max-width: $tablet) {
+				transform: translate(0, 0);
+			}
+		}
+		@media (max-width: $tablet) {
+			text-align: center;
+		}
+	}
+
+	// .how__content
+	&__content {}
+
+	// .how__block-header
+	&__block-header {}
+
+	// .how__list
+	&__list {}
+}
+
+.block-header {
+	&:not(:last-child) {
+		@include adaptiveValue("margin-bottom", 60, 30);
+	}
+	// .block-header__title
+	&__title {
+		max-width: toRem(400);
+	}
+}
+
+.block-header--center {}
+
+.list-how {
+	display: grid;
+	@include adaptiveValue("gap", 52, 24);
+	@extend %listCounter;
+
+	// .list-how__item
+	&__item {
+		@include adaptiveValue("padding-left", 70, 40);
+		display: grid;
+		grid-template-columns: toRem(170) auto;
+		gap: toRem(36);
+		&::before {
+			@include adaptiveValue("font-size", 52, 30);
+			font-weight: 700;
+			color: $greyColor
+		}
+		@media (max-width: toRem(520)) {
+			grid-template-columns: auto;
+			gap: toRem(12);
+		}
+	}
+
+	// .list-how__title
+	&__title {
+		@include adaptiveValue("font-size", 24, 20);
+		font-weight: 700;
+		line-height: 1.33;
+		color: $darckColor;
+	}
+
+	// .list-how__text
+	&__text {
+		line-height: 1.55; 
+	}
+}
+// HOW=====================================================================================
+// ========================================================================================
+
+
+
+
+
+
+
+
+
+
 
 
 
