@@ -345,6 +345,11 @@ body {
 	}
 }
 
+.header nav a.active{
+	color: $bgColorLite;
+	// transition: all 0.3s ease 0s;
+}
+
 .burger-menu {
 	display: none;
 	@media (max-width: $mobile) { 

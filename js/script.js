@@ -35,20 +35,8 @@ burger.addEventListener('click', function (event){
 
 // ==================================================================
 // anchors===========================================================
-// const anchors = document.querySelectorAll('a[href*="#"]');
-
-// for (let anchor of anchors) {
-// 	anchor.addEventListener("click", function (event) {
-// 		event.preventDefault();
-// 		const blockID = anchor.getAttribute('href');
-// 		document.querySelector(blockID).scrollIntoView({
-// 			behavior: "smooth",
-// 			block: "start",
-// 		});
-// 	});
-// }
-// ---------------------=========-----------------===============
-
+// ----------------
+// Плавная прокрутка
 const anchors = document.querySelectorAll('a[href*="#"]');
 const headerHeight = document.querySelector('.header').offsetHeight;
 
@@ -68,22 +56,30 @@ for (let anchor of anchors) {
 		}
 	});
 }
+
+// -----------------------
+//  Этот код обрабатывает событие прокрутки страницы и устанавливает активный класс для ссылки в навигации (.header nav a), соответствующей текущему разделу на странице.
+window.addEventListener('scroll', function () {
+	let sections = document.querySelectorAll('section[id]');
+	let scrollPosition = window.scrollY;
+
+	sections.forEach(function (section) {
+		let id = section.getAttribute('id');
+		let sectionTop = section.offsetTop - headerHeight - 1;
+
+		if (sectionTop < scrollPosition) {
+			let navLink = document.querySelector('.header nav a[href="#' + id + '"]');
+			if (navLink) {
+				// Remove 'active' class from all links in .header
+				document.querySelectorAll('.header a').forEach(function (link) {
+					link.classList.remove('active');
+				});
+
+				// Add 'active' class to the current link
+				navLink.classList.add('active');
+			}
+		}
+	});
+});
 // anchors===========================================================
 // ==================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
