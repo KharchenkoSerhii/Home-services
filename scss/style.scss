@@ -1202,27 +1202,32 @@ background-color: #fff;
 
 	// .list-how__item
 	&__item {
-		@include adaptiveValue("padding-left", 70, 40);
 		display: grid;
-		grid-template-columns: toRem(170) auto;
+		grid-template-columns: toRem(230) auto;
 		gap: toRem(36);
 		&::before {
 			@include adaptiveValue("font-size", 52, 30);
 			font-weight: 700;
-			color: $greyColor
+			line-height: 1.4;
+			color: $greyColor;
 		}
 		@media (max-width: toRem(520)) {
 			grid-template-columns: auto;
 			gap: toRem(12);
 		}
+
 	}
 
 	// .list-how__title
 	&__title {
+	@include adaptiveValue("padding-left", 70, 40);
 		@include adaptiveValue("font-size", 24, 20);
 		font-weight: 700;
 		line-height: 1.33;
 		color: $darckColor;
+		@media (max-width: toRem(520)) {
+			max-width: toRem(200);
+		}
 	}
 
 	// .list-how__text

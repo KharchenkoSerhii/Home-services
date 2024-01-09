@@ -35,16 +35,37 @@ burger.addEventListener('click', function (event){
 
 // ==================================================================
 // anchors===========================================================
+// const anchors = document.querySelectorAll('a[href*="#"]');
+
+// for (let anchor of anchors) {
+// 	anchor.addEventListener("click", function (event) {
+// 		event.preventDefault();
+// 		const blockID = anchor.getAttribute('href');
+// 		document.querySelector(blockID).scrollIntoView({
+// 			behavior: "smooth",
+// 			block: "start",
+// 		});
+// 	});
+// }
+// ---------------------=========-----------------===============
+
 const anchors = document.querySelectorAll('a[href*="#"]');
+const headerHeight = document.querySelector('.header').offsetHeight;
 
 for (let anchor of anchors) {
 	anchor.addEventListener("click", function (event) {
 		event.preventDefault();
 		const blockID = anchor.getAttribute('href');
-		document.querySelector('' + blockID).scrollIntoView({
-			behavior: "smooth",
-			block: "start",
-		});
+		const targetBlock = document.querySelector(blockID);
+
+		if (targetBlock) {
+			const offsetTop = targetBlock.offsetTop - headerHeight;
+
+			window.scrollTo({
+				top: offsetTop,
+				behavior: "smooth"
+			});
+		}
 	});
 }
 // anchors===========================================================
