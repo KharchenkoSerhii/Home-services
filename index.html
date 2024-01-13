@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Home Services</title>
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -429,11 +430,115 @@
 						</h2>
 					</div>
 
-					<div class="reviews__slider swiper">
-						<div class="reviews__wrapper swiper-wrapper">
-							<div class="reviews__slide swiper-slide"></div>
+
+					<!-- внешний контейнер блока слайдер -->
+					<div class="reviews__cover-slider">
+						<!-- Основной контейнер слайдера -->
+						<div class="swiper reviews__slider">
+							<!-- Внутренний контейнер слайдера -->
+							<div class="swiper-wrapper reviews__wrapper">
+
+								<!-- слайд1 -->
+								<div class="swiper-slide reviews__slide slide-reviews">
+									<div class="slide-reviews__logo logo-reviews">
+										<div class="logo-reviews__cower">
+											<img src="img/reviews/logo.png" alt="logo">
+										</div>
+									</div>
+									<div class="slide-reviews__text">
+										<p>
+											Roof repairs can be a real headache, but HomePro makes it easy! Their roofing team turned my leaky roof into a stockade. With their craftsmanship and the best materials, my house is now ready to weather any storm.
+										</p>
+									</div>
+									<div class="slide-reviews__user">
+										<div class="slide-reviews__avatar">
+											<img src="img/reviews/avatar.jpg" alt="avatar">
+										</div>
+										<div class="slide-reviews__body">
+											<div class="slide-reviews__name">Kende Attila</div>
+											<div class="slide-reviews__rating rating">
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_off.svg" alt=""></div>
+												<!-- <div class="rating__body">
+													<div class="rating__active"></div>
+													<div class="rating__items">
+														<input type="radio" class="rating__item" value="1" name="rating">
+														<input type="radio" class="rating__item" value="2" name="rating">
+														<input type="radio" class="rating__item" value="3" name="rating">
+														<input type="radio" class="rating__item" value="4" name="rating">
+														<input type="radio" class="rating__item" value="5" name="rating">
+													</div>													
+												</div>
+												<div class="rating__value">4</div> -->
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- слайд2 -->
+								<div class="swiper-slide reviews__slide slide-reviews">
+									<div class="slide-reviews__logo logo-reviews">
+										<div class="logo-reviews__cower">
+											<img src="img/reviews/logo.png" alt="logo">
+										</div>
+									</div>
+									<div class="slide-reviews__text">
+										<p>
+											Roof repairs can be a real headache, but HomePro makes it easy! Their roofing team turned my leaky roof into a stockade. With their craftsmanship and the best materials, my house is now ready to weather any storm.
+										</p>
+										<p>
+											Roof repairs can be a real headache, but HomePro makes it easy! Their roofing team turned my leaky roof into a stockade. With their craftsmanship and the best materials, my house is now ready to weather any storm.
+										</p>
+									</div>
+									<div class="slide-reviews__user">
+										<div class="slide-reviews__avatar">
+											<img src="img/reviews/avatar.jpg" alt="avatar">
+										</div>
+										<div class="slide-reviews__body">
+											<div class="slide-reviews__name">Kukushi Lee</div>
+											<div class="slide-reviews__rating rating">
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_on.svg" alt=""></div>
+												<div class="rating__item"><img src="img/reviews/star_off.svg" alt=""></div>
+												<!-- <div class="rating__body">
+													<div class="rating__active"></div>
+													<div class="rating__items">
+														<input type="radio" class="rating__item" value="1" name="rating">
+														<input type="radio" class="rating__item" value="2" name="rating">
+														<input type="radio" class="rating__item" value="3" name="rating">
+														<input type="radio" class="rating__item" value="4" name="rating">
+														<input type="radio" class="rating__item" value="5" name="rating">
+													</div>													
+												</div>
+												<div class="rating__value">4</div> -->
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
 						</div>
+
+
+
+						<!-- Навигация кнопки -->
+						<button type="button" class="arrow-reviews arrow-reviews__button-prev"></button>
+						<button type="button" class="arrow-reviews arrow-reviews__button-next"></button>
+
+						<!-- <button type="button" class="reviews-prev"></button>
+						<button type="button" class="reviews-next"></button> -->
+
 					</div>
+					<!-- Пагинация точки-->
+					<div class="reviews-pagination"></div>
+
+
+
+
 
 				</div>
 			</section>
@@ -450,7 +555,7 @@
 
 
 
-
+	<script src="js/swiper-bundle.min.js"></script>
 	<script src="js/script.js"></script>
 </body>
 

@@ -83,3 +83,57 @@ window.addEventListener('scroll', function () {
 });
 // anchors===========================================================
 // ==================================================================
+
+
+// ==================================================================
+// slider-swiper=====================================================
+const reviewsSlider = new Swiper('.reviews__slider', {
+	speed: 400,
+
+	// navigation: {
+	// 	nextEl: '.reviews__button-next',
+	// 	prevEl: '.reviews__button-prev',
+	// },
+
+	navigation: {
+		nextEl: '.arrow-reviews.arrow-reviews__button-next',
+		prevEl: '.arrow-reviews.arrow-reviews__button-prev',
+	},
+
+	pagination: {
+		el: '.reviews-pagination',
+		type: 'bullets',
+		clickable: true,
+	},
+	// loop: true,
+	autoHeight: true,
+});
+
+
+
+
+
+
+
+// slider-swiper=====================================================
+// ==================================================================
+
+
+
+// // Навигация
+// .arrow - reviews {
+// 	position: absolute;
+// 	top: 50 %;
+// 	transform: translate(0, -50 %);
+// 	width: toRem(48);
+// 	height: toRem(48);
+// 	border - radius: 50 %;
+// 	background: $bgColorLite url("../img/reviews/arrow_left.svg") center no - repeat;
+// 	& --prev {
+// 		left: 0;
+// 	}
+// 	& --next {
+// 		right: 0;
+// 		transform: rotate(180deg);
+// 	}
+// }

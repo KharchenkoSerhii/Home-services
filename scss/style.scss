@@ -1154,7 +1154,6 @@ background-color: #fff;
 
 	// .how__container
 	&__container {
-		border: 1px solid #FF5E5E;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		@media (max-width: $tablet) {
@@ -1245,12 +1244,205 @@ background-color: #fff;
 
 
 
+// ========================================================================================
+// REVIEWS=================================================================================
 
+.reviews {
+	@include adaptiveValue("padding-top", 130, 32);
+	@include adaptiveValue("padding-bottom", 130, 32);
 
+	// .reviews__container
+	&__container {
+		// @include adaptiveValue("padding-left", 155, 0);
+		// @include adaptiveValue("padding-right", 155, 0);
+		max-width: toRem(1160);
+		// background-color: #fcb1b1;
+	}
 
+	// .reviews__block-header
+	&__block-header {
+	}
 
+	// .reviews__cover-slider
+	&__cover-slider {
+		position: relative;
+		@include adaptiveValue("margin-bottom", 66, 16);
+	}
 
+	// .reviews__slider
+	&__slider {
+		margin: 0 toRem(72);
+		@media (max-width: $mobile) {
+			margin: 0;
+		}
+	}
 
+	// .reviews__wrapper
+	&__wrapper {
+		@include adaptiveValue("padding-bottom", 40, 32);
+	}
+
+	// .reviews__slide
+	&__slide {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 0;
+	}
+}
+
+.block-header {
+
+	// .block-header__title
+	&__title {
+		max-width: toRem(650);
+		margin: 0 auto;
+	}
+}
+
+.logo-reviews {
+
+	// .logo-reviews__cower
+	&__cower {
+		margin: 0 auto;
+		@include adaptiveValue("width", 207, 133);
+		@include adaptiveValue("height", 56, 36);
+		& img {
+			max-width: 100%;
+		}
+	}
+}
+
+.slide-reviews {
+
+	// .slide-reviews__logo
+	&__logo {
+		@include adaptiveValue("padding-top", 24, 0);
+		padding-bottom: toRem(24);
+		@include adaptiveValue("margin-bottom", 100, 24);
+		width: 100%;
+		text-align: center;
+		position: relative;
+			&::before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				left: 0;
+				bottom: 0;
+				height: toRem(1);
+				background: linear-gradient(90deg, rgba(78, 101, 182, 0) 0%, $greyColor 50%, rgba(78, 101, 182, 0) 100%);
+				}	
+	}
+
+	// .slide-reviews__text
+	&__text {
+		max-width: toRem(740);
+		@include adaptiveValue("font-size", 20, 18);
+		line-height: 1.6;
+		text-align: center;
+		// color: $mainColor;
+		@include adaptiveValue("margin-bottom", 40, 24);
+		p {
+			&:not(:last-child) {
+				margin-bottom: toRem(16);
+			}
+		}
+	}
+
+	// .slide-reviews__user
+	&__user {
+		display: flex;
+		min-width: 0;
+		@include adaptiveValue("gap", 32, 16);
+	}
+
+	// .slide-reviews__avatar
+	&__avatar {
+		@include adaptiveValue("width", 76, 52);
+		@include adaptiveValue("height", 76, 52);
+		border-radius: 50%;
+		overflow: hidden;
+		& img {
+			max-width: 100%;
+		}
+	}
+
+	// .slide-reviews__body
+	&__body {}
+
+	// .slide-reviews__name
+	&__name {
+		@include adaptiveValue("font-size", 24, 20);
+		font-weight: 700;
+		line-height: 1.33;
+		color: $darckColor;	
+		@include adaptiveValue("bargin-bottom", 8, 4);
+	}
+
+	// .slide-reviews__rating
+	&__rating {
+		display: flex;
+		min-width: 0;
+	}
+}
+
+.rating {
+
+	// .rating__item
+	&__item {
+		@include adaptiveValue("width", 36, 24);
+		@include adaptiveValue("height", 36, 24);
+		& img {
+			max-width: 100%;
+		}
+	}
+}
+
+// навигация
+.arrow-reviews.swiper-button-disabled {
+	background-color: #E3E6F0;
+}
+.arrow-reviews {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	width: toRem(48);
+	height: toRem(48);
+	border-radius: 50%;
+	background: $bgColorLite url("../img/reviews/arrow_left.svg") center no-repeat;
+	&__button-prev {
+		left: 0;
+	}
+	&__button-next {
+		right: 0;
+		transform: translate(0, -50%) rotate(180deg);
+	}
+	@media (max-width: $mobile) {
+		display: none;
+	}
+}
+
+// точки
+.reviews-pagination {
+	// text-align: center;
+	display: flex;
+	justify-content: center;
+	column-gap: toRem(4);
+	flex-wrap: wrap;
+}
+.reviews-pagination .swiper-pagination-bullet {
+		width: 12px;
+		height: 12px;
+		background-color: #E3E6F0;
+		cursor: pointer;
+}
+.reviews-pagination .swiper-pagination-bullet-active {
+	background-color: $bgColorLite;
+	width: toRem(40);
+	border-radius: toRem(24);
+}
+// REVIEWS=================================================================================
+// ========================================================================================
 
 
 
