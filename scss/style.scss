@@ -196,6 +196,41 @@ $mobileSmall: toRem(479.98);
 	}
 }
 
+// button----------------
+.button {
+	padding: toRem(7);
+	border-radius: toRem(60);
+	font-size: toRem(24);
+	font-weight: 700;
+	line-height: 1.33;
+	transition: all 0.3s ease 0s;
+	&:hover {}
+}
+
+.button--call {
+	background-color: $bgColorLite;
+	color: #fff;
+	display: inline-flex;
+	align-items: center;
+	border: toRem(1) solid $bgColorLite;
+
+	&:hover {
+		box-sizing: border-box;
+		background-color: $bgColorSemi;
+	}
+
+	span:nth-child(1) {
+		padding: toRem(8) toRem(16);
+	}
+
+	span:last-child {
+		background: url("../img/icons/Icon-phone.svg") left no-repeat;
+		background-color: #fff;
+		width: toRem(48);
+		height: toRem(48);
+		border-radius: 50%;
+	}
+}
 
 // ========================================================================================
 // ========================================================================================
@@ -208,6 +243,7 @@ body {
 	@include adaptiveValue("font-size",18 ,16);
 	color: $mainColor;
 	// background-color: #15B2F5;
+	
 }
 .wrapper {
 	// max-width: toRem(1920);
@@ -591,26 +627,14 @@ body {
 	}
 }
 
-.block-header {
 
-	// .block-header__title
-	&__title {}
-
-	// .block-header__title--white
-	&__title--white {}
-
-	// .block-header__title--big
-	&__title--big {}
-}
-
-.block-header--center {}
 
 .done {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	column-gap: toRem(40);
-	row-gap: toRem(3);
+	row-gap: toRem(8);
 	margin-bottom: toRem(48);
 	// .done__item
 	&__item {
@@ -621,40 +645,7 @@ body {
 		padding-left: toRem(32);
 	}
 }
-.button {
-	padding: toRem(7);
-	border-radius: toRem(60);
-	font-size: toRem(24);
-	font-weight: 700;
-	line-height: 1.33;
-	transition: all 0.3s ease 0s;
-	&:hover {
 
-	}
-}
-.button--call {
-	background-color: $bgColorLite;
-	color: #fff;
-	display: flex;
-	align-items: center;
-	border: toRem(1) solid $bgColorLite;
-	// @include adaptiveValue("margin-bottom", 150, 50);
-	// margin-bottom: toRem(150);
-	&:hover {
-		box-sizing: border-box;
-		background-color: $bgColorSemi;
-	}
-	span:nth-child(1) {
-		padding: toRem(8) toRem(16);
-	}
-	span:last-child {
-		background: url("../img/icons/Icon-phone.svg") left no-repeat;
-		background-color: #fff;
-		width: toRem(48);
-		height: toRem(48);
-		border-radius: 50%;		
-	}
-}
 
 .advantages-hero {
 	padding-bottom: toRem(30);
@@ -782,6 +773,7 @@ background-color: #fff;
 // ========================================================================================
 // SERVICES================================================================================
 .services {
+	// background-color: #da4343;
 		@include adaptiveValue("padding-top", 120, 46);
 		@include adaptiveValue("padding-bottom", 64, 30);
 	// .services__container
@@ -817,8 +809,15 @@ background-color: #fff;
 	// .services__block-header
 	&__block-header {
 		@include adaptiveValue("margin-bottom", 56, 16);
-	}
 
+	}
+	.services__block-header .block-header__text {
+		p {
+			color: $mainColor;
+			line-height: 1.55;
+		
+		}
+	}
 	// .services__items
 	&__items {
 		display: grid;
@@ -890,20 +889,6 @@ background-color: #fff;
 	}
 }
 
-.block-header {
-	
-	// .block-header__title
-	&__title {}
-
-	// .block-header__text
-	&__text {
-		p {
-			color: $mainColor;
-			line-height: 1.55;
-			
-		}
-	}
-}
 // SERVICES================================================================================
 // ========================================================================================
 
@@ -1029,11 +1014,6 @@ background-color: #fff;
 		@include adaptiveValue("padding-right", 100, 0);
 		background-color: $bgColor;
 		position: relative;
-		// @media (min-width: $tablet){
-		// 	padding-right: 0;
-		// 	padding-right: 0;
-		// }
-		position: relative;
 		&::before, &::after {
 			content: "";
 			position: absolute;
@@ -1058,8 +1038,7 @@ background-color: #fff;
 		}
 	}
 	// .guarantee__container
-	&__container {
-		// padding: toRem(60) toRem(26);                                       
+	&__container {                                     
 		padding: 0 toRem(32);
 	}
 
@@ -1067,15 +1046,6 @@ background-color: #fff;
 	&__block-header {
 		position: relative;
 		@include adaptiveValue("padding-bottom", 120, 60);
-
-		@media (max-width: $tablet) {
-			// flex-direction: column;
-			// grid-template-columns: repeat(1fr);
-	
-		}
-		@media (max-width: $mobile) {
-			// flex-direction: column;
-		}
 		
 		&::after {
 			content: "";
@@ -1088,7 +1058,11 @@ background-color: #fff;
 			background: linear-gradient(90deg, rgba(78, 101, 182, 0) 0%, rgba(78, 101, 182, 1) 50%, rgba(78, 101, 182, 0) 100%);
 		}
 	}
-
+		.guarantee__block-header .block-header__text {
+			p {
+				color: $greyColor;
+			}
+		}
 	// .guarantee__items
 	&__items {
 		display: grid;
@@ -1102,22 +1076,6 @@ background-color: #fff;
 
 	// .guarantee__item
 	&__item {}
-}
-
-.block-header {
-
-	// .block-header__title
-	&__title {}
-
-	// .block-header__title--white
-	&__title--white {}
-
-	// .block-header__text
-	&__text {
-		& p {
-			color: $greyColor;
-		}
-	}
 }
 
 .item-guarantee {
@@ -1201,25 +1159,19 @@ background-color: #fff;
 	&__content {}
 
 	// .how__block-header
-	&__block-header {}
+	&__block-header {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 60, 30);
+		}
+	}
 
 	// .how__list
 	&__list {}
 }
 
-.block-header {
-	&:not(:last-child) {
-		@include adaptiveValue("margin-bottom", 60, 30);
-	}
-	// .block-header__title
-	&__title {
-		// max-width: toRem(400);
-	}
-}
 .how__block-header .block-header__title {
 	max-width: toRem(400);
 	margin: 0;
-	
 }
 
 .list-how {
@@ -1284,6 +1236,7 @@ background-color: #fff;
 
 	// .reviews__block-header
 	&__block-header {
+		@include adaptiveValue("margin-bottom", 66, 32);
 	}
 
 	// .reviews__cover-slider
@@ -1653,6 +1606,7 @@ background-color: #fff;
 
 .spollers__item._spoller-item-active {
 	background-color: #f3f5f9;
+	transition: all 0.5s ease;
 }
 // Заголовок спойлера
 .spollers__title {
@@ -1712,6 +1666,121 @@ background-color: #fff;
 // SPOLLERS================================================================================
 
 // QUESTIONS===============================================================================
+// ========================================================================================
+
+
+
+// ========================================================================================
+// TALK====================================================================================
+.talk {
+	background-color: $bgColor;
+	position: relative;
+
+	// .talk__container
+	&__container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		@include adaptiveValue("gap", 100, 32);
+		@media (max-width: $tablet) {
+			display: block;
+		}
+	}
+
+	// .talk__content
+	&__content {
+		@include adaptiveValue("padding-top", 165, 56);
+		@include adaptiveValue("padding-bottom", 100, 32);
+		position: relative;
+		&::before {
+			content: "";
+			background: url("../img/talk/decore.svg") 0 0 / 83% no-repeat;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			aspect-ratio: 581 / 44;
+			@media (max-width: $tablet) {
+				background-position: center 0;
+			}
+		}
+		@media (max-width: $tablet) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	// .talk__block-header
+	&__block-header {
+		margin-bottom: toRem(24);
+		.block-header__title{
+			@media (max-width: $tablet) {
+				text-align: center;
+			}
+		}
+	}
+
+	// .talk__done
+	&__done {
+		justify-content: start;
+		@include adaptiveValue("margin-bottom", 36, 24);
+		@media (max-width: $tablet) {
+			justify-content: center;
+		}
+	}
+
+	// .talk__button
+	&__button {
+		@media (max-width: $tablet) {	
+			margin: 0 auto;
+		}
+	}
+
+	// .talk__footer
+	&__footer {
+		@media (min-width: $tablet) {
+			position: absolute;
+				bottom: 0;
+				width: 100%;
+				z-index: 100;
+				left: 50%;
+				transform: translate(-50%, 0);
+				display: flex;
+				overflow: hidden;
+		}
+			@media (max-width: $tablet) {
+			}
+	}
+
+	// .talk__img-null
+	&__img-null {
+		flex: 0 1 50%;
+			width: 100%;
+		@media (min-width: $mobileSmall) {
+			& img {
+				display: none;
+
+			}
+		}
+		& img {
+			width: 100%;
+			// object-fit: cover;
+		}
+	}
+
+	// .talk__image
+	&__image {
+		flex: 0 1 50%;
+		width: 100%;
+		& img {
+			max-width: 100%;
+			@media (max-width: $mobileSmall) {
+				display: none;
+			}
+		}
+	}
+}
+
+// TALK====================================================================================
 // ========================================================================================
 
 
