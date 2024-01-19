@@ -54,7 +54,6 @@ button::-moz-focus-inner {
 
 a, a:visited {
   text-decoration: none;
-  color: inherit;
 }
 
 a:hover {
@@ -225,6 +224,11 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
+.button:hover {
+  background-color: #1F3584;
+  color: #fff;
+}
+
 .button--call {
   background-color: #15B2F5;
   color: #fff;
@@ -700,6 +704,7 @@ body {
 .hero__block-header:not(:last-child) {
   margin-bottom: 1.5rem;
 }
+
 .items-hero {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2389,9 +2394,6 @@ body {
   margin-bottom: 1rem;
 }
 .item-blog__title {
-  color: #171921;
-  font-weight: 700;
-  line-height: 1.25;
   margin-bottom: 1rem;
 }
 @media (min-width: 120rem) {
@@ -2412,6 +2414,11 @@ body {
 .item-blog__title:hover {
   text-decoration: underline;
 }
+.item-blog__link-title {
+  color: #171921;
+  font-weight: 700;
+  line-height: 1.25;
+}
 .item-blog__text {
   margin-bottom: 1.5rem;
 }
@@ -2424,6 +2431,7 @@ body {
   gap: 0.75rem;
 }
 .item-blog__tag {
+  color: #545971;
   background-color: #F3F5F9;
   padding: 0.5rem 1rem;
   border-radius: 1.125rem;
@@ -2937,6 +2945,7 @@ body {
   width: 100%;
   font-size: 1.125rem;
   border-radius: 2.5rem;
+  border: #E3E6F0 0.0625rem solid;
 }
 .subscribe__button {
   background-color: #15B2F5;
@@ -2949,10 +2958,6 @@ body {
 }
 .subscribe__button:hover {
   background-color: #1F3584;
-}
-
-.input {
-  border: #af9494 1px solid;
 }
 
 .menu-footer {
@@ -2983,6 +2988,9 @@ body {
 }
 .menu-footer__item {
   margin-bottom: 1rem;
+}
+.menu-footer__link {
+  color: #fff;
 }
 .menu-footer__link:hover {
   text-decoration: underline;

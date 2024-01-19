@@ -207,7 +207,10 @@ $mobileSmall: toRem(479.98);
 	font-weight: 700;
 	line-height: 1.33;
 	transition: all 0.3s ease 0s;
-	&:hover {}
+	&:hover {
+		background-color: $bgColorSemi;
+		color: #fff;
+	}
 }
 
 .button--call {
@@ -593,15 +596,6 @@ body {
 			margin-bottom: toRem(24);
 		}
 	}
-
-	// .hero__done
-	&__done {}
-
-	// .hero__button
-	&__button {}
-
-	// .hero__advantages
-	&__advantages {}
 }
 
 .items-hero {
@@ -642,8 +636,6 @@ body {
 	}
 }
 
-
-
 .done {
 	display: flex;
 	flex-wrap: wrap;
@@ -660,7 +652,6 @@ body {
 		padding-left: toRem(32);
 	}
 }
-
 
 .advantages-hero {
 	padding-bottom: toRem(30);
@@ -743,7 +734,6 @@ body {
 	}
 	}
 }
-
 
 .decore-hero {
 background-color: #fff;
@@ -1449,8 +1439,6 @@ background-color: #fff;
 		display: grid;
 		@include adaptiveValue("gap", 48, 32);
 		grid-template-columns: repeat(auto-fill, minmax(toRem(400), 1fr));
-		// display: flex;
-		// flex-wrap: wrap;
 		&:not(:last-child) {
 			@include adaptiveValue("margin-bottom", 56, 24);
 		}
@@ -1460,10 +1448,7 @@ background-color: #fff;
 	}
 
 	// .blog__item
-	&__item {
-		// flex: 0 1 33.333%;
-		// min-width: toRem(280);
-	}
+	&__item {}
 
 	// .blog__view-more
 	&__view-more {
@@ -1514,10 +1499,7 @@ background-color: #fff;
 
 	// .item-blog__title
 	&__title {
-		color: $darckColor;
 		@include adaptiveValue("font-size", 32, 20);
-		font-weight: 700;
-		line-height: 1.25;
 		margin-bottom: toRem(16);
 		&:hover {
 			text-decoration: underline;
@@ -1525,7 +1507,11 @@ background-color: #fff;
 	}
 
 	// .item-blog__link-title
-	&__link-title {}
+	&__link-title {
+		color: $darckColor;
+		font-weight: 700;
+		line-height: 1.25;
+	}
 
 	// .item-blog__text
 	&__text {
@@ -1542,6 +1528,7 @@ background-color: #fff;
 
 	// .item-blog__tag
 	&__tag {
+		color: $mainColor;
 		background-color: #F3F5F9;
 		padding: toRem(8) toRem(16);
 		border-radius: toRem(18);
@@ -1786,8 +1773,6 @@ background-color: #fff;
 
 // TALK====================================================================================
 // ========================================================================================
-
-
 // MAIN====================================================================================
 // ========================================================================================
 
@@ -1910,7 +1895,7 @@ background-color: #fff;
 			width: 100%;
 			font-size: toRem(18);
 			border-radius: toRem(40);
-			// border: #FF5E5E 1px solid;
+			border: #E3E6F0 toRem(1) solid;
 		}
 		// .subscribe__button
 		&__button {
@@ -1924,9 +1909,6 @@ background-color: #fff;
 				background-color: $bgColorSemi;
 			}
 		}
-}
-.input {
-	border: #af9494 1px solid;
 }
 
 .social {
@@ -1961,6 +1943,7 @@ background-color: #fff;
 		}
 		// .menu-footer__link
 		&__link {
+			color: #fff;
 			&:hover {
 				text-decoration: underline;
 			}
